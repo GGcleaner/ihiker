@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iHiker 智能徒步助手</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 百度地图 API v2.0 -->
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kZyLx9pE2buNHOuq3bFNHDfXuFkxyaPJ"></script>
+</head>
+<body>
+  <header>
+    <h1>iHiker 智能徒步助手</h1>
+  </header>
+  <main>
+    <div id="map"></div>
+    <div id="stats">
+      <p>总距离：<span id="distance">0</span> 米</p>
+      <p>用时：<span id="time">0</span> 秒</p>
+      <p>平均速度：<span id="speed">0</span> 米/秒</p>
+      <button id="reset">清除轨迹</button>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
