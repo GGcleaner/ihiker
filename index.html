@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iHiker 智能徒步助手</title>
+  <meta name="description" content="iHiker - 智能徒步助手，记录你的每一步" />
+  <title>iHiker 智能徒步助手 v2.0</title>
   <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kZyLx9pE2buNHOuq3bFNHDfXuFkxyaPJ"></script>
 </head>
@@ -11,17 +12,30 @@
   <div id="app">
     <header>
       <div class="header-content">
-        <h1>iHiker</h1>
+        <div class="header-left">
+          <h1>iHiker</h1>
+          <span class="version-badge">v2.0</span>
+        </div>
         <div class="header-actions">
+          <div id="weather-widget" class="weather-widget" style="display: none;">
+            <span id="weather-icon"></span>
+            <span id="weather-temp"></span>
+          </div>
+          <button id="voice-toggle-btn" class="btn-icon" title="语音播报">
+            <span id="voice-icon">🔊</span>
+          </button>
+          <button id="stats-btn" class="btn-secondary">统计</button>
+          <button id="goals-btn" class="btn-secondary">目标</button>
+          <button id="achievements-btn" class="btn-secondary">成就</button>
+          <button id="history-btn" class="btn-secondary" style="display: none;">历史</button>
           <button id="auth-btn" class="btn-secondary">登录</button>
-          <button id="history-btn" class="btn-secondary">历史</button>
         </div>
       </div>
     </header>
 
     <div id="auth-modal" class="modal" style="display: none;">
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" data-modal="auth-modal">&times;</span>
         <h2 id="auth-title">登录账号</h2>
         <form id="auth-form">
           <input type="email" id="email" placeholder="邮箱" required />
@@ -36,9 +50,63 @@
 
     <div id="history-modal" class="modal" style="display: none;">
       <div class="modal-content wide">
-        <span class="close">&times;</span>
+        <span class="close" data-modal="history-modal">&times;</span>
         <h2>我的徒步记录</h2>
         <div id="track-list" class="track-list"></div>
+      </div>
+    </div>
+
+    <div id="stats-modal" class="modal" style="display: none;">
+      <div class="modal-content wide">
+        <span class="close" data-modal="stats-modal">&times;</span>
+        <h2>数据统计</h2>
+        <div id="stats-content" class="stats-content">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon">📊</div>
+              <div class="stat-card-label">总距离</div>
+              <div class="stat-card-value" id="total-distance">0 公里</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon">⏱️</div>
+              <div class="stat-card-label">总时长</div>
+              <div class="stat-card-value" id="total-time">0 小时</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon">🔥</div>
+              <div class="stat-card-label">徒步次数</div>
+              <div class="stat-card-value" id="total-count">0 次</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon">⚡</div>
+              <div class="stat-card-label">平均速度</div>
+              <div class="stat-card-value" id="avg-speed">0 公里/时</div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <h3>近7天趋势</h3>
+            <canvas id="trend-chart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="goals-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close" data-modal="goals-modal">&times;</span>
+        <h2>我的目标</h2>
+        <div class="goals-content">
+          <button id="add-goal-btn" class="btn-primary">+ 新增目标</button>
+          <div id="goals-list" class="goals-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="achievements-modal" class="modal" style="display: none;">
+      <div class="modal-content wide">
+        <span class="close" data-modal="achievements-modal">&times;</span>
+        <h2>成就系统</h2>
+        <div id="achievements-list" class="achievements-grid"></div>
       </div>
     </div>
 
@@ -86,7 +154,16 @@
         </div>
       </div>
     </main>
+
+    <div id="achievement-toast" class="achievement-toast" style="display: none;">
+      <div class="achievement-icon"></div>
+      <div class="achievement-content">
+        <div class="achievement-title">成就解锁！</div>
+        <div class="achievement-name"></div>
+      </div>
+    </div>
   </div>
-  <script type="module" src="script.js"></script>
+
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
