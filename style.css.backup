@@ -50,12 +50,6 @@ header {
   margin: 0 auto;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 1.5);
-}
-
 header h1 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -63,43 +57,9 @@ header h1 {
   letter-spacing: -0.5px;
 }
 
-.version-badge {
-  background: var(--primary);
-  color: white;
-  font-size: 0.65rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
 .header-actions {
   display: flex;
   gap: calc(var(--spacing) * 1.5);
-  align-items: center;
-}
-
-.weather-widget {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 0.5);
-  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
-  background: var(--bg);
-  border-radius: 8px;
-  font-size: 0.875rem;
-}
-
-.btn-icon {
-  padding: calc(var(--spacing) * 1);
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1.25rem;
-  border-radius: 8px;
-  transition: all 0.2s;
-}
-
-.btn-icon:hover {
-  background: var(--bg);
 }
 
 main {
@@ -297,8 +257,6 @@ main {
   position: relative;
   box-shadow: var(--shadow-lg);
   animation: slideUp 0.3s ease;
-  max-height: 80vh;
-  overflow-y: auto;
 }
 
 .modal-content.wide {
@@ -375,6 +333,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 1.5);
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .track-item {
@@ -437,208 +397,9 @@ main {
   color: var(--text-secondary);
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--spacing) * 2);
-  margin-bottom: calc(var(--spacing) * 3);
-}
-
-.stat-card {
-  padding: calc(var(--spacing) * 2);
-  background: var(--bg);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.stat-card-icon {
-  font-size: 2rem;
-  margin-bottom: calc(var(--spacing) * 1);
-}
-
-.stat-card-label {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-bottom: calc(var(--spacing) * 0.5);
-}
-
-.stat-card-value {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.chart-container {
-  background: var(--bg);
-  padding: calc(var(--spacing) * 2);
-  border-radius: 8px;
-}
-
-.chart-container h3 {
-  font-size: 1rem;
-  margin-bottom: calc(var(--spacing) * 2);
-  color: var(--text);
-}
-
-.goals-content {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing) * 2);
-}
-
-.goals-list {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing) * 1.5);
-}
-
-.goal-item {
-  padding: calc(var(--spacing) * 2);
-  background: var(--bg);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-
-.goal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: calc(var(--spacing) * 1);
-}
-
-.goal-type {
-  font-weight: 600;
-  color: var(--text);
-}
-
-.goal-period {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  background: var(--surface);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.goal-progress {
-  margin-top: calc(var(--spacing) * 1);
-}
-
-.progress-bar {
-  height: 8px;
-  background: var(--surface);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: calc(var(--spacing) * 0.5);
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--primary);
-  transition: width 0.3s ease;
-}
-
-.progress-text {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-top: calc(var(--spacing) * 0.5);
-}
-
-.achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: calc(var(--spacing) * 2);
-}
-
-.achievement-card {
-  padding: calc(var(--spacing) * 2);
-  background: var(--bg);
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid var(--border);
-  transition: all 0.2s;
-}
-
-.achievement-card.unlocked {
-  border-color: var(--primary);
-  background: linear-gradient(135deg, #10b98120 0%, #10b98110 100%);
-}
-
-.achievement-card.locked {
-  opacity: 0.5;
-}
-
-.achievement-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.achievement-emoji {
-  font-size: 2.5rem;
-  margin-bottom: calc(var(--spacing) * 1);
-}
-
-.achievement-name {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--text);
-  margin-bottom: calc(var(--spacing) * 0.5);
-}
-
-.achievement-desc {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-}
-
-.achievement-toast {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  z-index: 2000;
-  background: var(--surface);
-  padding: calc(var(--spacing) * 2);
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 2);
-  animation: slideInRight 0.3s ease;
-  border: 2px solid var(--primary);
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.achievement-icon {
-  font-size: 2rem;
-}
-
-.achievement-title {
-  font-size: 0.875rem;
-  color: var(--primary);
-  font-weight: 600;
-  margin-bottom: calc(var(--spacing) * 0.5);
-}
-
 @media (max-width: 768px) {
-  .header-content {
-    flex-wrap: wrap;
-  }
-
   .header-content h1 {
     font-size: 1.25rem;
-  }
-
-  .header-actions {
-    flex-wrap: wrap;
-    gap: calc(var(--spacing) * 1);
   }
 
   .stats-panel {
@@ -694,19 +455,6 @@ main {
     grid-template-columns: 1fr;
     gap: calc(var(--spacing) * 1);
   }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .achievements-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-
-  .achievement-toast {
-    right: 10px;
-    left: 10px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -717,9 +465,5 @@ main {
   .btn-secondary {
     padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
     font-size: 0.8rem;
-  }
-
-  .weather-widget {
-    font-size: 0.75rem;
   }
 }
