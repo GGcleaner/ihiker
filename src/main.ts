@@ -335,7 +335,7 @@ async function saveTrack() {
   const avgSpeed = totalTime > 0 ? totalDistance / totalTime : 0;
   const maxSpeed = recentSpeeds.length > 0 ? Math.max(...recentSpeeds) : 0;
 
-  const trackName = `徒步 ${new Date().toLocaleDateString('zh-CN')} ${new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}`;
+  const trackName = `跑步 ${new Date().toLocaleDateString('zh-CN')} ${new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}`;
 
   try {
     const trackData: any = {
@@ -444,7 +444,7 @@ function displayTracks(tracks: HikingTrack[]) {
   if (!trackList) return;
 
   if (tracks.length === 0) {
-    trackList.innerHTML = '<div class="empty-state">暂无徒步记录</div>';
+    trackList.innerHTML = '<div class="empty-state">暂无跑步记录</div>';
     return;
   }
 
@@ -588,15 +588,15 @@ async function shareTrack() {
   const minutes = Math.floor((elapsed % 3600) / 60);
   const timeStr = hours > 0 ? `${hours}小时${minutes}分钟` : `${minutes}分钟`;
 
-  const shareText = `我在 iHiker 上完成了一次徒步！
+  const shareText = `我在 iRunner 上完成了一次跑步！
 距离: ${distanceKm} 公里
 用时: ${timeStr}
-来一起加入徒步吧！`;
+来一起加入跑步吧！`;
 
   if (navigator.share) {
     try {
       await navigator.share({
-        title: 'iHiker 徒步分享',
+        title: 'iHiker 跑步分享',
         text: shareText
       });
     } catch (error: any) {
